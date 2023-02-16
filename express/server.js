@@ -20,12 +20,12 @@ router.get('/', (req, res) => {
 router.get('/another', (req, res) => res.json({ router: req.originalUrl }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
-app.get('/add-User', (req, res) => {
+router.get('/add-User', (req, res) => {
     res.sendFile(path.join(__dirname,'./index.html'))
 });
 
 
-app.post('/add-Post', (req, res) => {
+router.post('/add-Post', (req, res) => {
   
     S_name = req.body.Name;
     S_id = req.body.ST_ID;
@@ -50,8 +50,8 @@ app.post('/add-Post', (req, res) => {
 
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-app.use('/add-User', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+//app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+//app.use('/add-User', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 
 
