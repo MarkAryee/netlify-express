@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
-const user = require('./User');
+const user = require('../User');
 const bodyParser = require('body-parser');
 var createError = require('http-errors');
 
