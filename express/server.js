@@ -4,6 +4,7 @@ const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const user = require('../User');
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 var createError = require('http-errors');
 
