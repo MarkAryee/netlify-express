@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
+const user = require('./User');
 const bodyParser = require('body-parser');
 var createError = require('http-errors');
 
@@ -18,9 +19,36 @@ router.get('/', (req, res) => {
 router.get('/another', (req, res) => res.json({ router: req.originalUrl }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
+
+app.post('/add-Post', (req, res) => {
+  
+    S_name = req.body.Name;
+    S_id = req.body.ST_ID;
+
+  const User = new user({
+    name: S_name,
+    id: S_id
+  });
+
+  User.save().then((result) => {
+    res.send(result)
+  }).catch((err) => {
+    console.log(err);
+  })
+  
+  //res.send(req.body);
+
+});
+
+
+
+
 app.use(bodyParser.json());
 app.use('/.netlify/functions/server', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
+
+
+
 
 app.use(function(req, res, next) {
   next(createError(404));
