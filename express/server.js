@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hellxpress.js!</h1>');
-  res.sendFile(path.join(__dirname, './index.html'
+  //res.sendFile(path.join(__dirname, './index.html'
   res.end();
 
 });
