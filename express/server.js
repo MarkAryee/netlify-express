@@ -21,7 +21,7 @@ router.get('/another', (req, res) => res.json({ router: req.originalUrl }));
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 
 
-app.post('/add-Post', (req, res) => {
+router.post('/add-Post', (req, res) => {
   
     S_name = req.body.Name;
     S_id = req.body.ST_ID;
